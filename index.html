@@ -1,39 +1,45 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Mi tienda online</title>
-		<!-- Bootstrap icons -->
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
-		<!-- CSS Styles -->
-		<link rel="stylesheet" href="./css/styles.css" />
-	</head>
-	<body>
-		<!-- Encabezado de la página -->
-		<header>
-			<a href="./index.html"  class="logo"> MUNDOTRAIL</a>
-		</header>
 
-		<!-- Contenido principal -->
-		<main>
-			<h1>Bienvenidos a MundoTrail</h1>
-			<section>
-				<h2>Productos</h2>
-				<ul class="product-list">
-					<!-- Agrego productos dinámicamente con JavaScript -->
-				</ul>
-			</section>
-			<section>
-				<h2>Carrito</h2>
-				<div class="carrito"></div>
-			</section>
-		</main>
+<head>
+	<title>Mi tienda online</title>
+	<!-- Bootstrap icons -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+	<!-- CSS Styles -->
+	<link rel="stylesheet" href="./css/styles.css" />
+</head>
 
-		<footer>
-			<p>&copy; 2023 MUNDOTRAIL</p>
-		</footer>
+<body>
+	<header class="header">
+		<div>
+			<a href="./index.html" class="logo"> MUNDOTRAIL</a>
+		</div>
+		<div id="imgCarrito">
+			<img src="./assets/carrito-de-compras.png">
+		</div>
+	</header>
 
-		<!-- Scripts -->
-		<script src="./js/productos.js"></script>
-		<script src="./js/carrito.js"></script>
-	</body>
+	<main>
+		<h1>Bienvenidos a MundoTrail</h1>
+		<section>
+			<p> Hola, aqui encontraras productos para tus actividades outdoor. </p>
+			<h2>Productos</h2>
+			<ul class="product-list"></ul>
+		</section>
+		<br>
+		<section class="modal">
+			<h2>Carrito</h2>
+			<div class="carrito"></div>
+		</section>
+	</main>
+
+	<footer>
+		<p>&copy; 2023 MUNDOTRAIL</p>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="./js/productos.js"></script>
+	<script src="./js/carrito.js"></script>
+</body>
+
 </html>
