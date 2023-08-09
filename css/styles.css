@@ -19,11 +19,7 @@ header {
 	padding: 3px 3%;
 }
 
-#imgCarrito img {
-	width: 30px;
-}
-
-.logo {
+.marca {
 	font-size: 1.5rem;
 	text-transform: uppercase;
 	color: #fff;
@@ -144,7 +140,7 @@ footer p {
 	padding: 0.5rem;
 }
 
-.modal{
+.carritoSec{
 	border: 1px solid #ccc;
 	padding: 1em;
 }
@@ -153,3 +149,15 @@ footer p {
 	justify-content: center;
 }
 
+.finalizarCompra {
+	display: block;
+	border: none;
+	cursor: pointer;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #333;
+	color: #fff;
+	padding: 1rem 0.8rem;
+	text-decoration: none;
+	transition: background-color 0.2s ease;
+}

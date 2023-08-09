@@ -19,6 +19,13 @@ const mostrarProductos = (productos) => {
 		contenedorProductos.appendChild(li);
 		const boton = document.getElementById(`agregar-${producto.id}`);
 		boton.addEventListener("click", () => {
+			Swal.fire({
+				position: 'top-end',
+				icon: 'success',
+				title: 'Agregaste un producto al carrito',
+				showConfirmButton: false,
+				timer: 1500
+			  })
 			agregarAlCarrito(producto.id);
 		});
 	});
@@ -82,7 +89,23 @@ const mostrarCarrito = () => {
 			productsCart.appendChild(li);
 			const boton = document.getElementById(`eliminar-${producto.id}`);
 			boton.addEventListener("click", () => {
-				eliminarProducto(producto.id);
+				Swal.fire({
+					title: 'Estas seguro que deseas eliminar?',
+					icon: 'warning',
+					showCancelButton: true,
+					confirmButtonColor: '#3085d6',
+					cancelButtonColor: '#d33',
+					confirmButtonText: 'Si, quiero eliminar!'
+				  }).then((result) => {
+					if (result.isConfirmed) {
+					  Swal.fire(
+						'Eliminado',
+						'Tu articulo ha sido eliminado.',
+						'success'
+					  )
+					  eliminarProducto(producto.id);
+					}
+				  })
 			});
 
 
@@ -125,10 +148,11 @@ const eliminarProducto = (id) => {
 	mostrarCarrito();
 };
 
-const actualizarTotal = (contenedor) => {
+const actualizarTotal = (contenedor) => { 
 	const total = carrito.reduce((acumulador, producto) => acumulador + producto.precio * producto.cantidad, 0);
 	contenedor.textContent = `Total: $${total} USD`;
 };
+
 
 /*LÓGICA*/
 
