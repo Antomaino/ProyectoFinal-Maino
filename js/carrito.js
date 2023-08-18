@@ -25,17 +25,25 @@ const mostrarProductos = (productos) => {
 				title: 'Agregaste un producto al carrito',
 				showConfirmButton: false,
 				timer: 1500
-			  })
-			agregarAlCarrito(producto.id);
+			})
+			fetch("..//JSON/productos.json")
+				.then((response) => {
+					if (response.ok){
+						return response.json();
+					} else {
+						throw new Error ('Hubo un error en el servidor: ' + response.status);
+					}
+				})
+				.then((productos) => {
+					agregarAlCarrito(productos, producto.id);
+				});
 		});
 	});
 };
 
 // FUNCIONES DEL CARRITO 
 
-
-
-const agregarAlCarrito = (id) => {
+const agregarAlCarrito = (productos, id) => {
 	if (!carrito.some((producto) => producto.id === id)) {
 		const producto = productos.find((producto) => producto.id === id);
 		carrito.push({ ...producto, cantidad: 1 });
@@ -96,16 +104,16 @@ const mostrarCarrito = () => {
 					confirmButtonColor: '#3085d6',
 					cancelButtonColor: '#d33',
 					confirmButtonText: 'Si, quiero eliminar!'
-				  }).then((result) => {
+				}).then((result) => {
 					if (result.isConfirmed) {
-					  Swal.fire(
-						'Eliminado',
-						'Tu articulo ha sido eliminado.',
-						'success'
-					  )
-					  eliminarProducto(producto.id);
+						Swal.fire(
+							'Eliminado',
+							'Tu articulo ha sido eliminado.',
+							'success'
+						)
+						eliminarProducto(producto.id);
 					}
-				  })
+				})
 			});
 
 
@@ -148,7 +156,7 @@ const eliminarProducto = (id) => {
 	mostrarCarrito();
 };
 
-const actualizarTotal = (contenedor) => { 
+const actualizarTotal = (contenedor) => {
 	const total = carrito.reduce((acumulador, producto) => acumulador + producto.precio * producto.cantidad, 0);
 	contenedor.textContent = `Total: $${total} USD`;
 };
@@ -156,5 +164,9 @@ const actualizarTotal = (contenedor) => {
 
 /*LÓGICA*/
 
-mostrarProductos(productos);
-mostrarCarrito();
+fetch("..//JSON/productos.json")
+	.then((response) => response.json())
+	.then((productos) => {
+		mostrarProductos(productos);
+		mostrarCarrito();
+	});
